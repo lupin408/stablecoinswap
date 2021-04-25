@@ -5,9 +5,64 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: linear-gradient(to bottom right, whitesmoke, rgb(47, 196, 255)) ;
+  height: 100%;
+}
+html{
+  height: 100%;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+#titlecard {
+  color: rgb(47, 196, 255);
+  background-color: whitesmoke;
+  position: fixed;
+  width: 100%;
+}
+#betatag {
+  color: orange
+}
+#curavliq {
+  position: relative;
+  left:50%;
+  background-color: whitesmoke;
+  border-radius: 2px;
+  width: 10%;
+  box-shadow: 1px 2px 2px rgb(47, 196, 255);
+}
+#provliqwindow, #userloans, #userprovidedliq {
+ 
+  z-index: 3;
+  
+  
+  width: 200px;
+  height: 180px;
+  background-color: whitesmoke;
+}
+
+#provliqwindow {
+  position: relative;
+  left: 40%;
+  
+ 
+}
+#userloans{
+  position: relative;
+  left: 25%;
+ top: -270px;
+ 
+}
+#userprovidedliq {
+  position: relative;
+  left: 65%;
+  top: -150px;
+
+}
+#totaldep {
+  position: relative;
+  top: 15%;
+  left: 45%;
 }
