@@ -12,12 +12,17 @@ app.use(bodyParser.json());
 app.use(cors());
 
 
-app.use(express.static(path.join(__dirname, '..', 'build')));
+app.use(express.static(path.join(__dirname, '../', 'build')));
 
 
-const PORT = 3001;
+const PORT = 80;
 app.get('/entries', (req, res) => {
-
+  
+  //check if ip in mysql
+  //if it is then send back 'duplicate user'
+  //otherwise get whitelisted number from mysql and send back
+  //delete number from mysql
+ 
    
   });
 

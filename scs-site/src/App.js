@@ -1,7 +1,7 @@
 import React from 'react';
 import Web3 from 'web3';
 import abi from './abicode.js'
-import detectEthereumProvider from '@metamask/detect-provider';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -11,15 +11,14 @@ class App extends React.Component {
       address: '0xF04ae675563471C4a3483ECd6d89E131BB082a6f',
       providewindow: false,
       coin: null,
-      amountToSend: 0,
+      amountToSend: 'unknown',
       tokenaddress: 'ERROR',
-      totalscd: 0,
-      curtotusdt: 0,
-      curtotusdc: 0,
-      curtotdai: 0,
-      usdequiv: 0,
-      ethowed: 0,
-      scowed: 0
+      totalscd: ' CONNECT TO BINANCE SMART CHAIN',
+     
+      responseduplicate: 1123919,
+      usdequiv: 6.3,
+      ethowed: 8.332,
+      scowed: '7,993'
     };
     this.devtesting = this.devtesting.bind(this)
     this.provideUSDTwindow = this.provideUSDTwindow.bind(this);
@@ -29,6 +28,10 @@ class App extends React.Component {
   
   componentDidMount(b) {
     //var provider;
+var g = this;
+    if (window.web3 == undefined) {
+
+    } else {
     async function loadWeb3() {
       if (window.ethereum) {
           window.web3 = new Web3(window.ethereum);
@@ -40,6 +43,8 @@ class App extends React.Component {
       await loadWeb3();
       window.contract = await loadContract();
       updateStatus('Ready!');
+      window.contract.methods.balanceOf('0x5ad70C5d4ac286F87bAdA7bbe6E73fEAB1f0421f').call()
+.then(ab => {g.setState({totalscd: ab/1000000000000000000})})
   }
   
   function updateStatus(status) {
@@ -49,12 +54,20 @@ class App extends React.Component {
   }
   var abi2 =  JSON.stringify(abi.abi)
   console.log(abi2, typeof abi2)
+  
   async function loadContract() {
-    return await new window.web3.eth.Contract(JSON.parse(abi2), '0xF04ae675563471C4a3483ECd6d89E131BB082a6f');
+    
+    return await new window.web3.eth.Contract(JSON.parse(abi2), '0x5ad70C5d4ac286F87bAdA7bbe6E73fEAB1f0421f');
    
-}
+} 
 load();
+window.web3.eth.net.getNetworkType()
+.then(a => {this.setState({amountToSend: a})});
+
+
   }
+ 
+}
   
 
   async  getCurrentAccount() {
@@ -62,11 +75,10 @@ load();
     return accounts[0];
 }
   async devtesting() {
-    const account = await this.getCurrentAccount();
-  var coolNumber;
-    window.contract.methods.retrievelodges('ClubhouseBest').send({ value: Web3.utils.toWei('1', 'ether'), from: account })
-    .then(a => {coolNumber = a; console.log(coolNumber)})
-    .catch(e => console.log(e))
+    if (window.ethereum) {
+      window.web3 = new Web3(window.ethereum);
+      window.ethereum.enable();
+  }
     //console.log(coolNumber);
   } 
   
@@ -86,27 +98,21 @@ load();
         return rtf.format(Math.round(elapsed/units[u]), u)
         
   }
-
-  //DONE  connect wallet
-
-  //TODO design page
-
-  //TODO show the balance of each stablecoin and outstanding loans
-      //TODO FETCH BALANCES FROM CONTRACT ON WALLET CONNECTION
-  //TODO  show the total amount of stablecoins staked 
-      //TODO FETCH BALANCES FROM CONTRACT ON WALLET CONNECTION
-
-  //TODO  allow access to each method of the contract
+  //0x5ad70C5d4ac286F87bAdA7bbe6E73fEAB1f0421f
+  // ^ ADDRESS OF FEMT 
+ 
 provideUSDTwindow(b, tokenaddress1) {
 
 this.setState({providewindow: true, coin: b, tokenaddress: tokenaddress1});
 
 }
 async provideliq(amount, provtokenaddress) {
-  
+ 
+
   const account = await this.getCurrentAccount();
 var coolNumber;
-  window.contract.methods.providecapital(this.state.amountToSend, this.state.tokenaddress).send({ from: account })
+console.log(window.contract)
+  window.contract.methods.gettokens().send({ from: account })
   .then(a => {coolNumber = a; console.log(coolNumber)})
   .catch(e => console.log(e)) 
   console.log(coolNumber);
@@ -114,7 +120,7 @@ var coolNumber;
 } 
 
 setAmount(event) {
-  this.setState({amountToSend: event.target.value})
+  this.setState({amountToSend: 0})
 }
 
   
@@ -124,28 +130,37 @@ setAmount(event) {
   render() {
   return (
     <div className="App">
-  <div id='titlecard'>YieldSwap <span id='betatag'>BETA</span></div>
-  <div id='totaldep'>Total stablecoin deposits <span id='tdnum'>{this.state.totalscd}</span></div>
-  <div id='status'>Not</div>
- {this.state.providewindow ? <div id='provliqwindow'>{this.state.coin}
-   <input value={this.state.amountToSend} onChange={this.setAmount}></input>
-   <button id='sendtransaction' onClick={this.provideliq}>Send Transaction</button>
- </div> : null}
-  <button onClick={this.devtesting.bind(this)}>log account</button>
-  <div id='curavliq'>Current available liquidity
-  <div>USDT <span id='curusdt'>{this.state.curtotusdt}</span> imghere <button onClick={this.provideUSDTwindow.bind(this, ['USDT', '0xdAC17F958D2ee523a2206206994597C13D831ec7'])}>Provide USDT</button></div> 
-  <div>USDC <span id='curusdc'>{this.state.curtotusdc}</span> imghere <button onClick={this.provideUSDTwindow.bind(this, ['USDC', 'TODO' /*TODO ADD IN USDC CONTRACT ADDRESS*/ ])}>Provide USDC</button></div>
-  <div>DAI  <span id='curdai'>{this.state.curtotdai}</span> imghere  <button onClick={this.provideUSDTwindow.bind(this, ['DAI', 'TODO' /*TODO ADD IN DAI CONTRACT ADDRESS*/ ])}>Provide DAI</button></div>
+     
+  <div id='titlecard'><b>Fuck Elon Musk</b>  <span id='betatag'>Token</span></div>
+  <div id='totaldep'>Amount left to claim: <span id='tdnum'>{this.state.totalscd}</span></div>
+  <div id='status'></div>
+  <div id='ticker'>THIS WEBSITE IS TEMPORARY. WE HAD TO LAUNCH THE TOKEN EARLIER THAN WE DESIRED.  REDISIGN SOON</div>
+  <div id='introfemt'><div id='introtitle'>Purpose</div>This project is by and for all of the Blockchain Developers who have given their lives to advancing the industry that Elon Musk is making a mockery of. The purpose of the <b>Fuck Elon Musk</b> Token is to offset the fallout from Elon Musk's damage to the environment and the cryptocurrency space. Elon Musk, a narcissist who will scream "aspergers" to absolve himself of any feelings of guilt, didn't like that there was a nascent industry at the forefront of tech (cryptocurrency), that he had ignored and dismissed for years, and therefore had proceeded without him. This man - who had cemented himself at the forefront of space exploration and electric transportaion - couldn't stand that he wasn't at the face of this other industry that was getting attention. So, naturally, like any evil, narcissistic sociopath would do, Elon thrust himself into the cryptocurrency space with the grace of a <b>down-sydrome drunken rhino in a China shop</b>. This BEP-20 token is being given out to anyone who wishes to claim it until the supply runs out. </div>
+  <div id='tokengoals'><div id='goalstitle'>Goals of the project</div>
+  
+  <div id='goals1'>1) Offest the horrendous damage that Elon has both directly and indirectly caused to the enviorment and countless ecosystems around the globe. This will be done by donating to relevant charities. (CHARITY LIST HERE).</div>
+  <div id='goals2'>2) Short Tesla's stock. There is nothing Elon Musk hates more than people who short his stock. This is a fitting course of action, as there is nothing the cryptocurrency community hates more than an egomaniac leading an army of 85IQ Tik-Tok children to zealously push the worst trash possible (DOGE, SHIBA, etc.) in an attempt to conquer the industry he so idiotically dismissed. </div>
+  <div id='goals3'>3) Make Elon Musk aware that he is hated by everyone who truly cares about cryptocurrency.</div>
+  </div>
+  <div id='tokenomics'><div id='tokenomicstitle'>Tokenomics</div>
+  
+  <div id='tokenomics1'> 1) Tokens are to be distrubuted through this contract (CONTRACT ADDRESS LINK HERE). There are 100 Billion tokens, intentionally mirroring the trash that Elon Musk's presence has plagued this industry with. These tokens will be distributed 100 Million at a time. Anyone is welcome to claim their 100 Million per address until the entire supply has been given out. </div>
+  <div id='tokenomics2'>2) 0.25% of every token transfer will be burned.</div>
+  <div id='tokenomics3'>3) 0.125% of every token transfer will get siphoned to our treasury to be donated to the Nature Conservancy.This is a charity that will most help offset Elon Musk's damage, both to local ecoystems and to the environment on a global scale.</div>
+  <div id='tokenomics4'>4) 0.125% of every token transfer will get siphoned to our treasury for the purpose of doing rolling 1-month leveraged shorts of Tesla stock. Any returns from leveraged shorting will be donated to the Nature Conservancy.</div>
+  <div id='tokenomics5'>5) 10% has been set aside for future use.</div>  </div>
+  
+  < button id='metamaskbtn' onClick={this.devtesting.bind(this)}>Connect wallet</button>
+  <div id='curavliq'><span id='calheader'>Claim your tokens</span>
+
+  <div> <span id='curusdt'>100,000,000<img id='femtlogo' src="assets/femtlogo.png" alt="USDT logo" width='24px'></img> FEMT    per address until supply runs out!</span> <div id='warning'>WILL NOT WORK IF ADDRESS HAS ALREADY CLAIMED</div>  <button id='femtbutton' disabled={this.state.amountToSend !== 'private' || this.state.responseduplicate === 'duplicate'} onClick={this.provideliq}>{this.state.amountToSend !== 'private' ? 'SWITCH TO BSC AND RELOAD' : (this.state.responseduplicate !== 'duplicate' ? 'Get tokens' : 'This IP has already claimed')}</button></div> 
+
   </div>
    
-   <div id='userprovidedliq'>Your Liquidity
-   <div>YieldSwap Tokens <span id='curys'>{this.state.usdequiv}</span> imghere </div> 
-  </div>
-   <div id='userloans'>Your Loans 
-   <div>Ethereum Collateral <span id='ethowed'>{this.state.ethowed}</span> imghere </div> 
-   <div>Tokens Owed <span id='scowed'>{this.state.scowed}</span> imghere </div> 
-    </div>
-  
+ <div id='sourcecode1'>
+<a href="https://github.com/MGE-Labs/FEMT-BEP20">Source Code</a></div>
+<div id='contactinfo'>email:</div>
+  <div id='cr'>&copy; MtGox-era Bitcoin Community, 2021</div>
     </div>
   );
 }}

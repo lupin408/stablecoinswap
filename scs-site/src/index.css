@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: linear-gradient(to bottom right, whitesmoke, rgb(47, 196, 255)) ;
+  background-color: rgb(125, 78, 253);
   height: 100%;
 }
 html{
@@ -17,52 +17,119 @@ code {
     monospace;
 }
 #titlecard {
-  color: rgb(47, 196, 255);
+  color: black;
   background-color: whitesmoke;
   position: fixed;
   width: 100%;
+  text-shadow: 0px 0px 1px orange;
 }
 #betatag {
-  color: orange
+  color: rgb(125, 78, 253);
+  text-shadow: none;
 }
 #curavliq {
   position: relative;
-  left:50%;
+  left: 38%;
+  top: 10px;
   background-color: whitesmoke;
   border-radius: 2px;
-  width: 10%;
-  box-shadow: 1px 2px 2px rgb(47, 196, 255);
+  width: 24%;
+  box-shadow: 1px 2px 1px 2px orange ;
+  height: 120px;
+  text-shadow: 0px 1px 0.5px white;
+  text-align: center;
 }
-#provliqwindow, #userloans, #userprovidedliq {
- 
-  z-index: 3;
-  
-  
-  width: 200px;
-  height: 180px;
-  background-color: whitesmoke;
+#tokengoals, #tokenomics, #introfemt {
+  background-color: black;
+  color: whitesmoke;
+  width: 75%;
+  margin-left: 12.5%;
+  border-radius: 2px;
+  margin-top: 20px;
+  text-shadow: 0px 0px 1px white;
+  box-shadow: 1px 0px 1px 1.5px orange;
+}
+#tokengoals {
+  box-shadow: 1px 0px 1px 1.5px orange;
+}
+#metamaskbtn {
+  position: absolute;
+  right: 30px;
+  top: 20px;
+  z-index: 15;
+}
+#ysclogo {
+  position: relative;
+  top: 10px;
+}
+#ylheader, #ylqheader, #calheader{
+  text-decoration: underline;
+  font-weight: bold ;
 }
 
-#provliqwindow {
-  position: relative;
-  left: 40%;
-  
- 
-}
-#userloans{
-  position: relative;
-  left: 25%;
- top: -270px;
- 
-}
-#userprovidedliq {
-  position: relative;
-  left: 65%;
-  top: -150px;
 
-}
 #totaldep {
   position: relative;
-  top: 15%;
-  left: 45%;
+  top: 0%;
+ text-align: center;
+}
+#etherlogo {
+  position: relative;
+  top: 10px;
+}
+#femtlogo {
+  position: relative;
+  top: 6px;
+  margin-left: 2px;
+}
+
+#sourcecode1 {
+  text-align: center;
+  margin-top: 5%;
+
+}
+#contactinfo {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.76);
+}
+#status {
+  color: green;
+}
+#cr{
+  text-align: center;
+  font-size: smaller;
+  color: grey;
+  position: relative;
+  top: 50px;
+}
+ #femtbutton {
+  position: relative;
+  top: 30px;
+ 
+  box-shadow: 1px 2px 2px rgb(125, 78, 253);
+  background-color: chartreuse;
+  border-radius: 2px;
+  border-width: 0px;
+}
+#introtitle, #goalstitle, #tokenomicstitle {
+  text-align: center;
+  font-size: xx-large;
+  text-decoration: underline;
+  text-decoration-color: rgb(125, 78, 253);
+  text-shadow: 1px 1px 1px white;
+
+}
+#ticker {
+  color: red;
+  
+  position: relative;
+  text-align: center;
+  z-index: 10;
+  background: black;
+  text-shadow: 0px 0px 1px red;
+}
+
+#warning {
+  color: red;
+  text-align: center;
 }
