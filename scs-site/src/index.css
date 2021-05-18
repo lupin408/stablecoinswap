@@ -29,13 +29,13 @@ code {
 }
 #curavliq {
   position: relative;
-  left: 38%;
+
   top: 10px;
   background-color: whitesmoke;
   border-radius: 2px;
-  width: 24%;
+  
   box-shadow: 1px 2px 1px 2px orange ;
-  height: 120px;
+  
   text-shadow: 0px 1px 0.5px white;
   text-align: center;
 }

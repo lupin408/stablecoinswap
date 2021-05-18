@@ -138,13 +138,13 @@ setAmount(event) {
   <div id='introfemt'><div id='introtitle'>Purpose</div>This project is by and for all of the Blockchain Developers who have given their lives to advancing the industry that Elon Musk is making a mockery of. The purpose of the <b>Fuck Elon Musk</b> Token is to offset the fallout from Elon Musk's damage to the environment and the cryptocurrency space. Elon Musk, a narcissist who will scream "aspergers" to absolve himself of any feelings of guilt, didn't like that there was a nascent industry at the forefront of tech (cryptocurrency), that he had ignored and dismissed for years, and therefore had proceeded without him. This man - who had cemented himself at the forefront of space exploration and electric transportaion - couldn't stand that he wasn't at the face of this other industry that was getting attention. So, naturally, like any evil, narcissistic sociopath would do, Elon thrust himself into the cryptocurrency space with the grace of a <b>down-sydrome drunken rhino in a China shop</b>. This BEP-20 token is being given out to anyone who wishes to claim it until the supply runs out. </div>
   <div id='tokengoals'><div id='goalstitle'>Goals of the project</div>
   
-  <div id='goals1'>1) Offest the horrendous damage that Elon has both directly and indirectly caused to the enviorment and countless ecosystems around the globe. This will be done by donating to relevant charities. (CHARITY LIST HERE).</div>
+  <div id='goals1'>1) Offest the horrendous damage that Elon has both directly and indirectly caused to the enviorment and countless ecosystems around the globe. This will be done by donating to the Nature Conservancy.</div>
   <div id='goals2'>2) Short Tesla's stock. There is nothing Elon Musk hates more than people who short his stock. This is a fitting course of action, as there is nothing the cryptocurrency community hates more than an egomaniac leading an army of 85IQ Tik-Tok children to zealously push the worst trash possible (DOGE, SHIBA, etc.) in an attempt to conquer the industry he so idiotically dismissed. </div>
   <div id='goals3'>3) Make Elon Musk aware that he is hated by everyone who truly cares about cryptocurrency.</div>
   </div>
   <div id='tokenomics'><div id='tokenomicstitle'>Tokenomics</div>
   
-  <div id='tokenomics1'> 1) Tokens are to be distrubuted through this contract (CONTRACT ADDRESS LINK HERE). There are 100 Billion tokens, intentionally mirroring the trash that Elon Musk's presence has plagued this industry with. These tokens will be distributed 100 Million at a time. Anyone is welcome to claim their 100 Million per address until the entire supply has been given out. </div>
+  <div id='tokenomics1'> 1) Tokens are to be distrubuted through this contract (<a href='https://bscscan.com/token/0x5ad70c5d4ac286f87bada7bbe6e73feab1f0421f'>0x5ad70c5d4ac286f87bada7bbe6e73feab1f0421f</a>). There are 1 Trillion tokens, intentionally mirroring the trash that Elon Musk's presence has plagued this industry with. These tokens will be distributed 1 Billion at a time. Anyone is welcome to claim their 1 Billion per address until the entire supply has been given out. </div>
   <div id='tokenomics2'>2) 0.25% of every token transfer will be burned.</div>
   <div id='tokenomics3'>3) 0.125% of every token transfer will get siphoned to our treasury to be donated to the Nature Conservancy.This is a charity that will most help offset Elon Musk's damage, both to local ecoystems and to the environment on a global scale.</div>
   <div id='tokenomics4'>4) 0.125% of every token transfer will get siphoned to our treasury for the purpose of doing rolling 1-month leveraged shorts of Tesla stock. Any returns from leveraged shorting will be donated to the Nature Conservancy.</div>
@@ -153,14 +153,15 @@ setAmount(event) {
   < button id='metamaskbtn' onClick={this.devtesting.bind(this)}>Connect wallet</button>
   <div id='curavliq'><span id='calheader'>Claim your tokens</span>
 
-  <div> <span id='curusdt'>100,000,000<img id='femtlogo' src="assets/femtlogo.png" alt="USDT logo" width='24px'></img> FEMT    per address until supply runs out!</span> <div id='warning'>WILL NOT WORK IF ADDRESS HAS ALREADY CLAIMED</div>  <button id='femtbutton' disabled={this.state.amountToSend !== 'private' || this.state.responseduplicate === 'duplicate'} onClick={this.provideliq}>{this.state.amountToSend !== 'private' ? 'SWITCH TO BSC AND RELOAD' : (this.state.responseduplicate !== 'duplicate' ? 'Get tokens' : 'This IP has already claimed')}</button></div> 
+  <div> <span id='curusdt'>1,000,000,000<img id='femtlogo' src="assets/femtlogo.png" alt="FEMT logo" width='24px'></img> FEMT    per address until supply runs out!</span> <div id='warning'>WILL NOT WORK IF ADDRESS HAS ALREADY CLAIMED</div>  <button id='femtbutton' disabled={this.state.amountToSend !== 'private' || this.state.responseduplicate === 'duplicate'} onClick={this.provideliq}>{this.state.amountToSend !== 'private' ? 'SWITCH TO BSC AND RELOAD' : (this.state.responseduplicate !== 'duplicate' ? 'Get tokens' : 'This IP has already claimed')}</button></div> 
 
   </div>
    
  <div id='sourcecode1'>
 <a href="https://github.com/MGE-Labs/FEMT-BEP20">Source Code</a></div>
-<div id='contactinfo'>email:</div>
-  <div id='cr'>&copy; MtGox-era Bitcoin Community, 2021</div>
+<div id='contactinfo'></div> 
+<div><a href="https://twitter.com/FEMTokenTeam"><img id='twitlogo' src="assets/twitlo2.png" alt="Twitter logo" width='24px'></img></a>        <a href="https://discord.gg/uFD2hX4e"><img id='disclogo' src="assets/disclogo.png" alt="Discord logo" width='24px'></img></a></div>
+  <div id='cr'>&copy; Cryptocurrency Community, 2021</div>
     </div>
   );
 }}
